@@ -1,5 +1,6 @@
 from importlib.machinery import WindowsRegistryFinder
 from tkinter import N
+import random
 
 
 class Player:
@@ -25,7 +26,13 @@ def init_deck():
     return global_deck
 
 def shuffle_deck():
-    pass
+    temp_deck = global_deck
+    shuffled_deck = []
+    for i in range(52):
+        random_select = random.randint(0,len(temp_deck))
+        shuffled_deck.append(temp_deck[random_select])
+        del temp_deck[random_select]
+    return shuffled_deck
 
 def create_players():
     wrong_selection = "default"
