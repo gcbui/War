@@ -78,10 +78,29 @@ def split_deck(players,deck):
 def play_a_turn(players):
     print ("Player # "+player.number+"'s card is equal to "+player.cards[0].number+" of "+player.cards[0].suit)
 
-def did_player_win(players): #return player that won and returns True or False if player los
-
+def which_player_won_turn(players): #return player that won and returns True or False if player los
+    pot = []
+    for i in range(len(players)):
+        pot.append(players[i].cards[0])
+        players[i].cards.pop(0)
+    
+    winner = players[0].number
+    winners_card_value = pot[0].cards.number
+    for i in range(1,len(pot)):
+        if pot[i].cards.number is winners_card_value:
+            print("IT'S a TIE!")
+            winner = players[i].number #using this for now
+            winners_card_value = pot[i].cards.number #using this for now
+        elif pot[i].cards.number > winners_card_value:
+            winner = players[i].number
+            winners_card_value = pot[i].cards.number
+    
+    for i in range(len(pot)):
+        players[winner-1].append(pot[i])  #[winner-1] because first player is player 1 not player 0
+        
 def player_that_wins(players):
-    did_player_win = False
+    pass
+    '''did_player_win = False
     while did_player_win == False:
         for i in range(len(players)):
             if len(players[i].cards) == 0:    #remove player because they lost
@@ -106,5 +125,5 @@ def player_that_wins(players):
         if player.card.number > max_card:
             max_card = player.card.number
             winner = player
-    
+    '''
 
