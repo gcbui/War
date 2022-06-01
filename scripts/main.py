@@ -89,8 +89,8 @@ def which_player_won_turn(players): #return player that won and returns True or 
     for i in range(1,len(pot)):
         if pot[i].cards.number is winners_card_value:
             print("IT'S a TIE!")
-            winner = players[i].number #using this for now
-            winners_card_value = pot[i].cards.number #using this for now
+            winner = players[i].number #using this for now until make tie logic
+            winners_card_value = pot[i].cards.number #using this for now until make tie logic
         elif pot[i].cards.number > winners_card_value:
             winner = players[i].number
             winners_card_value = pot[i].cards.number
